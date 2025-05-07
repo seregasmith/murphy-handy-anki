@@ -13,8 +13,8 @@ My version - to *create handy buttons* to type it and fill input field. For smar
 2. Set your options to schedule studies on Deck. My opts - 25 new, 50 to recap for Exercises Deck. It's about 30 min a day to solve all scheduled cards.
 3. Open Deck and resume your study
 	1. When it's no options - fill input according to question and score your answer after hint check.
-	2. When only one field you can input answer by keyboard or press a button with the correct answer. When you again press any button after it, all fields would be cleared.
+	2. When there's only one field you can input answer by keyboard or press a button with the correct answer. When you again press any button after it, all fields would be cleared.
 	3. If there are many fields to answer type answers as times as fields' count and if you type it one more - clearing would be happen.
 	4. Use CLEAR button to clear all fields and input.
-*In case you check and want to submit answer on **mobile**, type something to make a correct hint check. Type a **space** at the end, for example.
+In case you check and want to submit answer on **mobile**, type something to make a correct hint check. Type a **space** at the end, for example.
 
