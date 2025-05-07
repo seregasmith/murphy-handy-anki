@@ -1,0 +1,140 @@
+<div id="rubric">{{Rubric}}</div>
+
+{{#Image}}
+<div id="image">{{Image}}</div>
+{{/Image}}
+
+{{#Audio}}
+<div id="audio">{{Audio}}</div>
+{{/Audio}}
+
+<div id="question">{{cloze:Question}}</div>
+<div id="choises">
+  
+</div>
+<div id="clearAll">
+  
+</div>
+<div id="choices">{{hint:Choices}}</div>
+
+<div id="input">
+  {{type:cloze:Question}}
+</div>
+
+<div id="header">
+  <div id="category">{{Category}}</div>
+  <div id="unit">{{Unit}}</div>
+</div>
+
+<script>
+  var lastFilledCloze = 0;
+
+  function focusOnInput(){
+    var parentElement = document.getElementById("input");
+    var allDescendants = parentElement.querySelectorAll('*');
+    allDescendants.forEach(function(descendant) {
+      descendant.focus();
+    });
+  }
+
+
+
+  function clearAll(){
+    lastFilledCloze = 0;
+    var cloze = document.querySelectorAll(".cloze");
+    for (var i = 0; i < cloze.length; i++) {
+      cloze[i].textContent = "___"; 
+    }
+
+    var parentElement = document.getElementById("input");
+    var allDescendants = parentElement.querySelectorAll('*');
+
+    // Loop through each descendant and set the inner text
+    allDescendants.forEach(function(descendant) {
+      descendant.value = "";
+
+
+      var hint = document.querySelectorAll(".hint");
+      if (hint.length > 0) {
+        if (hint.length > 0) {
+          var choices = hint[1].innerHTML;
+          var boxes = choices.split(" | ");
+          var invars = boxes[0].split("/");
+          if(invars.length > 0) {
+            return;
+          }
+        }}
+        descendant.focus();
+      });
+  }
+
+
+
+  function changeLabelText() {
+    var text = this.innerText;
+    var cloze = document.querySelectorAll(".cloze");
+    if(lastFilledCloze>=cloze.length) {
+      clearAll();
+      return;
+    }
+    cloze[lastFilledCloze].textContent= " " + text + " ";
+
+
+    lastFilledCloze++;
+
+    
+    var parentElement = document.getElementById("input");
+    var allDescendants = parentElement.querySelectorAll('*');
+
+    // Loop through each descendant and set the inner text
+    allDescendants.forEach(function(descendant) {
+      if(descendant.value === ""){
+        descendant.value = text;
+      } else {
+        descendant.value = descendant.value + ", " + text;
+      }
+      if(lastFilledCloze>=cloze.length){
+        descendant.focus();
+      }
+    });
+  }
+
+
+
+
+  var hint = document.querySelectorAll(".hint");
+  if (hint.length > 0) {
+    if (hint.length > 0) {
+      var choices = hint[1].innerHTML;
+      var boxes = choices.split(" | ");
+      var invars = boxes[0].split("/");
+      for (var j = 0; j < invars.length; j++) {
+        var button = document.createElement("button");
+
+        button.id = "btn"+j;
+        
+        button.addEventListener("click", changeLabelText);
+      // Set the button text
+      button.innerText = invars[j];
+      document.getElementById("choises").appendChild(button);
+
+    }
+
+
+  }
+}
+
+
+var button = document.createElement("button");
+
+button.id = "btnClearAll";
+
+button.addEventListener("click", clearAll);
+      // Set the button text
+      button.innerText = "CLEAR";
+      document.getElementById("clearAll").appendChild(button);
+
+
+      clearAll();
+
+    </script>

@@ -1,0 +1,148 @@
+.card {
+ font-family: tahoma;
+ font-size: 20px;
+ text-align: center;
+ color: black;
+ background-color: white;
+}
+
+#image {
+  width: 70%;
+  height: 40%;
+  margin: auto;
+  padding-bottom: 10px;
+}
+
+.cloze {
+ font-family: arial;
+ font-size: 20px;
+ font-weight: bold;
+ color: blue;
+}
+
+#rubric {
+  font-size: 18px;
+  font-family: arial;
+  text-align: left;
+  padding: 4px;
+  padding-left: 20px;
+  margin-bottom: 16px;
+  background: #1d6695;
+  color: white;
+  font-weight: 600;
+}
+
+#rubric b {
+  font-style: italic;
+}
+
+#question {
+  padding-bottom: 8px;
+  line-height: 1.5;
+}
+
+#question b, #choices b, #unit b {
+  font-weight: normal;
+}
+
+#audio {
+  margin-top: 2px;
+}
+
+#audioText {
+  margin-bottom: 10px;
+}
+
+#audioText table {
+   margin-left:auto; 
+   margin-right:auto;
+   text-align: left;
+}
+
+#audioText p {
+  margin: 0;
+}
+
+#audioText p:not(:first-child) {
+  margin-top: 8px;
+}
+
+#header {
+  font-family: calibri;
+  text-align: right;
+  margin-top: 6px;
+}
+
+#category {
+  font-size: 18px;
+}
+
+#unit {
+  font-size: 17px;
+}
+
+#choises button{
+margin-top: 10px;
+margin-right: 10px;
+}
+
+
+#clearAll {
+margin-top: 20px;
+}
+
+#clearAll button{
+color: red;
+}
+
+
+#choices {
+visibility: hidden;
+  margin-bottom: 10px;
+}
+
+#choices ul {
+  padding: 0;
+  margin: 0;
+}
+
+.choices_variants {
+  display: inline-block;  
+  text-align: left;
+}
+
+.choices_words {
+  font-family: tahoma;
+  font-size: 20px;
+  text-align: center;
+}
+
+.choices_words li {
+  font-size: 18px;
+  display: inline-block;
+  border-radius: 0.2em;
+  padding: 4px 8px;
+  border-style: solid;
+  border-width: 2px;
+  margin: 5px;
+}
+
+.choices-box-delimiter {
+  height: 6px;
+  margin: 0px;
+}
+
+.choices_words ul:nth-child(3) li {
+  background: #f7deb7;
+}
+
+
+
+/* https://www.reddit.com/r/Anki/comments/4s2wpu/any_way_to_have_text_centered_but_leftjustified/d56hzgq */
+.l {
+  display: inline-block;
+  align: center;
+  text-align: left;
+  margin: auto;
+  padding-left: 10px;
+}

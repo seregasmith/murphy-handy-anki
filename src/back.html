@@ -1,0 +1,62 @@
+<div id="rubric">{{Rubric}}</div>
+
+{{#Image}}
+<div id="image">{{Image}}</div>
+{{/Image}}
+
+{{#Audio}}
+<div id="audio">{{Audio}}</div>
+{{#AudioText}}
+<div id="audioText">{{AudioText}} </div>
+{{/AudioText}}
+{{/Audio}}
+
+<div id="question">{{cloze:Question}}</div>
+
+{{type:cloze:Question}}
+
+<div id="header">
+  <div id="category">{{Category}}</div>
+  <div id="unit">{{Unit}}</div>
+</div>
+
+<script>
+// Убираем круглые скобки после cloze, т.е в ответе они не нужны.
+// https://regex101.com
+var question = document.getElementById("question").innerHTML;
+document.getElementById("question").innerHTML = question.replace(/(<span class="cloze">[^<]*<\/span>) (\([^\)]*\))/g,"$1");
+
+// При показе вопроса скрываем cloze, содержащий только дефис, и убираем пробел перед cloze при необходимости
+var question = document.getElementById("question").innerHTML;
+question = question.replace(/<span class="cloze">-<\/span>/, "");
+question = question.replace(/<span class="cloze">–<\/span>/, "");
+question = question.replace(/ <span class="cloze">,/, '<span class="cloze">,');
+question = question.replace(/ <span class="cloze">'/, '<span class="cloze">\'');
+question = question.replace(/<\/span> +,/, '</span>,');
+question = question.replace(/ +\./, ".");
+document.getElementById("question").innerHTML = question;
+
+// Если cloze содержит несколько вариантов ответа, то оставляем только один вариант для лучшей читаемости, остальные и так будут показаны при сравнении введенного на клавиатуре ответа.
+var cloze = document.querySelectorAll(".cloze");
+for (var i = 0; i < cloze.length; i++) {
+  cloze[i].textContent = cloze[i].textContent.replace(/^([^|]*).*$/, "$1"); 
+}
+
+//  Если диалог, то выравнить текст по центру карточки по левому краю
+var isDialog = false;
+var lines = lines = "{{cloze::Question}}".split('<br />')
+for (var i = 0; i < lines.length; i++) {
+  if (lines[i].indexOf(":") != -1) {
+    isDialog = true;
+  }
+}
+if (isDialog) {
+  var element = document.getElementById("question");
+  var parent = element.parentNode;
+  var wrapper = document.createElement('div');
+  parent.replaceChild(wrapper, element);
+  wrapper.appendChild(element);
+  element.className = "l";
+}
+
+</script>
